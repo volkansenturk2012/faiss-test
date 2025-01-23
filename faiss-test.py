@@ -42,3 +42,5 @@ reader = SimpleDirectoryReader(
     )
 
 docs = reader.load_data()
+
+print(docs[0].text)

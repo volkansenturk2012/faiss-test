@@ -29,3 +29,7 @@ data = pd.read_csv(file_path)
 
 # Preview the csv file
 data.head()
+
+# Create FaisVectorStore to store embeddings
+fais_index = faiss.IndexFlatL2(EMBED_DIMENSION)
+vector_store = FaissVectorStore(faiss_index=fais_index)

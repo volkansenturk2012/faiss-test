@@ -44,3 +44,17 @@ reader = SimpleDirectoryReader(
 docs = reader.load_data()
 
 print(docs[0].text)
+
+pipeline = IngestionPipeline(
+    vector_store=vector_store,
+    documents=docs
+)
+
+nodes = pipeline.run()
+
+
+vector_store_index = VectorStoreIndex(nodes)
+query_engine = vector_store_index.as_query_engine(similarity_top_k=2)
+
+response = query_engine.query("find 2015 Porsche Macan 2 SUV Otomatik Benzin 237 hp 'Marka Kodu' and Tip Kodu' values ")
+response.response

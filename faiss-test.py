@@ -33,3 +33,12 @@ data.head()
 # Create FaisVectorStore to store embeddings
 fais_index = faiss.IndexFlatL2(EMBED_DIMENSION)
 vector_store = FaissVectorStore(faiss_index=fais_index)
+
+csv_reader = PagedCSVReader()
+
+reader = SimpleDirectoryReader( 
+    input_files=[file_path],
+    file_extractor= {".csv": csv_reader}
+    )
+
+docs = reader.load_data()

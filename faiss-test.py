@@ -22,3 +22,10 @@ os.environ["OPENAI_API_KEY"] = os.getenv('OPENAI_API_KEY')
 EMBED_DIMENSION=512
 Settings.llm = OpenAI(model="gpt-3.5-turbo")
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small", dimensions=EMBED_DIMENSION)
+
+file_path = ('../data/clean-202412R3.csv') # insert the path of the csv file
+
+data = pd.read_csv(file_path)
+
+# Preview the csv file
+data.head()
